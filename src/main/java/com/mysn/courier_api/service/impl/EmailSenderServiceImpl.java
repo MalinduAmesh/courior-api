@@ -14,13 +14,15 @@ public class EmailSenderServiceImpl{
 
     private final JavaMailSender javaMailSender;
 
-    private final static String EMAIL_BODY = "<b>Hey,</b><br><br><h2>Details for the delivery</h2>" +
-            "<h3>senders Name:- %s</h3>" +
+    private final static String EMAIL_BODY =
+            "<h5>Hey %s,</h5><br>"+
+            "</b><br><br><h2>You Have to deliver</h2>" +
+            "<h3>Senders Name:- %s</h3>" +
             "<h3>Senders Address:- %s</h3>" +
             "<h3>Receivers Name:- %s</h3>" +
             "<h3>Receivers Address:- %s</h3>";
 
-    public void sendSimpleEmail(String toEmail,String senderName,String senderAddress,String receiverName,String receiverAddress)throws MessagingException {
+    public void sendSimpleEmail(String toEmail,String Hey,String senderName,String senderAddress,String receiverName,String receiverAddress)throws MessagingException {
 
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
@@ -28,7 +30,7 @@ public class EmailSenderServiceImpl{
         String from ="ameshmalindu006@gmail.com";
 
         boolean html = true;
-        helper.setText(String.format(EMAIL_BODY,senderName, senderAddress, receiverName, receiverAddress), html);
+        helper.setText(String.format(EMAIL_BODY,Hey,senderName, senderAddress, receiverName, receiverAddress), html);
 
         helper.setFrom(from);
         helper.setTo(toEmail);

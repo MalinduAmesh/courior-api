@@ -40,11 +40,8 @@ public class PlaceOrderServiceImpl implements PlaceOrderService {
             if (byId.isPresent()) {
                 Courier courier3 = byId.get();
 
-                emailSenderService.sendSimpleEmail(courier3.getEmail(),orderDTO.getSenderName(),orderDTO.getSenderAddress(),orderDTO.getReceiverName(),orderDTO.getReceiverAddress());
-            }else {
-
+                emailSenderService.sendSimpleEmail(courier3.getEmail(),courier3.getName(),orderDTO.getSenderName(),orderDTO.getSenderAddress(),orderDTO.getReceiverName(),orderDTO.getReceiverAddress());
             }
-
             kafkaTemplate.send("courierService", order.getReceiverName());
 
         }else {

@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/courier_db?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&characterSetResults=UTF-8&autoReconnect=true&createDatabaseIfNotExist=true
+    username: root
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: update
+  kafka:
+    bootstrap-servers: localhost:9092
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ameshmalindu006@gmail.com
+    password: vewgfjkercfqtjgu
+    properties.mail.smtp:
+                      auth: true
+                      starttls.enable: true
